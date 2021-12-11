@@ -31,13 +31,13 @@ class CustomerDataAccess:
         return f'customer id: {id} deleted!'
 
     def get_all_customers(self):
-        self.cursor.execute("select * from customer")
+        self.cursor.execute("SELECT * FROM customer")
         return [f'{row[1]} {row[2]}' for row in self.cursor]
 
     def get_customers_by_id(self, id):
         if not self.check_customer(int(id)) : return 'wrong id!'
         else:
-            self.cursor.execute("select * from customer where" + \
+            self.cursor.execute("SELECT * FROM customer WHERE" + \
                                 f' id = {id}')
             return [f'{row[0]} {row[1]} {row[2]} {row[3]} {row[4]}' for row in self.cursor]
 

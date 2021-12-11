@@ -15,8 +15,8 @@ class CustomerDataAccess:
 
     def check_customer(self, _input):
         self.cursor.execute('SELECT * FROM customer')
-        _l = [row[0] for row in self.cursor]
-        return _input in _l
+        _c = [row[0] for row in self.cursor]
+        return _input in _c
 
     def insert_customer(self, customer):
         if self.check_customer(int(customer.id)): return 'id occupied'

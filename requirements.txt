@@ -1,0 +1,11 @@
+ kivy-deps.gstreamer==0.3.3
+ kivy-deps.angle==0.3.1
+ kivy-deps.glew==0.3.0
+ kivy-deps.sdl2==0.3.1
+ psychopg2==2.9.2
+ pytest==6.2.5
+ pygame==2.1.0
+ kivy==2.0.0
+ kivi-garden==0.1.4
+ pygments==2.11.2
+ sqlalchemy==1.4.27

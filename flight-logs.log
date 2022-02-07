@@ -1,0 +1,20 @@
+2022-02-07 19:53:31,059:DbRepo:CRITICAL:file=[sp_file] wasnt found
+2022-02-07 19:54:24,880:DbRepo:CRITICAL:file=[sp_file] wasnt found
+2022-02-07 19:57:11,269:DbRepo:WARNING:deleting all the tables >>>
+2022-02-07 19:57:11,270:DbRepo:WARNING:deleting table airline_companies.
+2022-02-07 19:57:11,282:DbRepo:WARNING:deleting table administrators.
+2022-02-07 19:57:11,287:DbRepo:WARNING:deleting table customers.
+2022-02-07 19:57:11,293:DbRepo:WARNING:deleting table users.
+2022-02-07 19:57:11,298:DbRepo:WARNING:deleting table user_roles.
+2022-02-07 19:57:11,302:DbRepo:WARNING:deleting table countries.
+2022-02-07 19:57:11,307:DbRepo:WARNING:deleting table flights.
+2022-02-07 19:57:11,310:DbRepo:WARNING:deleting table tickets.
+2022-02-07 19:57:22,510:DbRepo:WARNING:deleting all the tables >>>
+2022-02-07 19:57:22,510:DbRepo:WARNING:deleting table airline_companies.
+2022-02-07 19:57:22,552:DbRepo:WARNING:deleting table administrators.
+2022-02-07 19:57:22,553:DbRepo:WARNING:deleting table customers.
+2022-02-07 19:57:22,553:DbRepo:WARNING:deleting table users.
+2022-02-07 19:57:22,554:DbRepo:WARNING:deleting table user_roles.
+2022-02-07 19:57:22,555:DbRepo:WARNING:deleting table countries.
+2022-02-07 19:57:22,556:DbRepo:WARNING:deleting table flights.
+2022-02-07 19:57:22,557:DbRepo:WARNING:deleting table tickets.

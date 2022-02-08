@@ -20,6 +20,7 @@ class DbGenWidget(Widget):
 
     # root.btn() in kv file
     def btn(self):
+        #self.add_widget(Label(text=f'Your details has been submitted!'))
         print("Airline Companies:", self.airline_companies.text,
               "Customers:", self.customers.text,
               "Administrators:", self.administrators.text,

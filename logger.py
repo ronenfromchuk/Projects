@@ -35,3 +35,5 @@ class Logger:
                 cls._instance.logger.addHandler(cls._instance.file_handler)
 
                 return cls._instance
+            else:
+                return cls._instance

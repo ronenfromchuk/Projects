@@ -3,3 +3,4 @@ psychopg2
 pytest
 pygame
 kivy
+pika

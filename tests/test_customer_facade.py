@@ -2,21 +2,21 @@
 import pytest
 from db_config import local_session
 from DbRepo import DbRepo
-from FacadeAnonymous import AnonymusFacade
+from facades.FacadeAnonymous import anonymousFacade
 from Tickets import Tickets
 from Customers import Customers 
-from ExceptionNoMoreTickets import NoMoreTicketsLeft
-from ExceptionFlightNotFound import FlightNotFound
-from ExceptionCustomerNotFound import CustomerNotFound
-from ExceptionTicketNotFound import TicketNotFound
-from ExceptioWrongInput import InvalidInput
+from exceptions.ExceptionNoMoreTickets import NoMoreTicketsLeft
+from exceptions.ExceptionFlightNotFound import FlightNotFound
+from exceptions.ExceptionCustomerNotFound import CustomerNotFound
+from exceptions.ExceptionTicketNotFound import TicketNotFound
+from exceptions.ExceptioWrongInput import InvalidInput
 
 repo = DbRepo(local_session)
-anonymus_facade = AnonymusFacade(repo)
+anonymous_facade = anonymousFacade(repo)
 
 @pytest.fixture(scope='session')
 def customer_facade_object():
-    an_facade = AnonymusFacade(repo)
+    an_facade = anonymousFacade(repo)
     return an_facade.login('bibi', 'sarahmalka')
 
 @pytest.fixture(scope='function', autouse=True)

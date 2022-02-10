@@ -4,32 +4,32 @@ from Countries import Countries
 from db_config import local_session
 from DbRepo import DbRepo
 from datetime import datetime
-from FacadeAnonymous import AnonymusFacade
+from facades.FacadeAnonymous import anonymousFacade
 from Airline_Companies import AirlineCompanies
 from Customers import Customers
 from Users import Users
 from Flights import Flights
 from Administrators import Administrators 
-from ExceptionUserExist import UserAlreadyExists
-from ExceptionShortPassword import WrongPassword
-from ExceptionUndefinedUserId import UndefinedUserID
-from ExceptionAdminNotFound import AdminNotFound
-from ExceptionAirlineNotFound import AirlineNotFound
-from ExceptionCustomerNotFound import CustomerNotFound
-from ExceptioWrongInput import InvalidInput
-from ExceptionFlightNotFound import FlightNotFound
-from ExceptionWrongCountry import InvalidCountry
+from exceptions.ExceptionUserExist import UserAlreadyExists
+from exceptions.ExceptionShortPassword import WrongPassword
+from exceptions.ExceptionUndefinedUserId import UndefinedUserID
+from exceptions.ExceptionAdminNotFound import AdminNotFound
+from exceptions.ExceptionAirlineNotFound import AirlineNotFound
+from exceptions.ExceptionCustomerNotFound import CustomerNotFound
+from exceptions.ExceptioWrongInput import InvalidInput
+from exceptions.ExceptionFlightNotFound import FlightNotFound
+from exceptions.ExceptionWrongCountry import InvalidCountry
 
 repo = DbRepo(local_session)
-anonymus_facade = AnonymusFacade(repo)
+anonymous_facade = anonymousFacade(repo)
 
 @pytest.fixture(scope='session')
 def base_facade_object():
-    an_facade = anonymus_facade
+    an_facade = anonymous_facade
     return an_facade
 
 @pytest.fixture(scope='function', autouse=True)
-def anonymus_facade_clean():
+def anonymous_facade_clean():
     repo.reset_db()
 
 def test_get_all_flights(base_facade_object):

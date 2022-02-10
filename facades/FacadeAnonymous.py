@@ -7,15 +7,15 @@ from FacadeBase import FacadeBase
 from FacadeAirline import AirlineFacade
 from FacadeCustomer import CustomerFacade
 from FacadeAdministrator import AdministratorFacade
-from ExceptionUserExist import UserAlreadyExists
-from ExceptioWrongInput import InvalidInput
-from ExceptionUserNotFound import UsernameNotFound
-from ExceptionShortPassword import WrongPassword
-from ExceptionWrongPassword import WrongPassword
-from ExceptionInvalidUserRole import InvalidUserRole
-from ExceptionUndefinedUserId import UndefinedUserID
+from exceptions.ExceptionUserExist import UserAlreadyExists
+from exceptions.ExceptioWrongInput import InvalidInput
+from exceptions.ExceptionUserNotFound import UsernameNotFound
+from exceptions.ExceptionShortPassword import WrongPassword
+from exceptions.ExceptionWrongPassword import WrongPassword
+from exceptions.ExceptionInvalidUserRole import InvalidUserRole
+from exceptions.ExceptionUndefinedUserId import UndefinedUserID
 
-class AnonymusFacade(FacadeBase):
+class anonymousFacade(FacadeBase):
 
     def __init__(self, repo):
         super().__init__(repo)

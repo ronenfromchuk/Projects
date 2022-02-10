@@ -4,11 +4,11 @@ from FacadeBase import FacadeBase
 from Tickets import Tickets
 from Flights import Flights
 from Customers import Customers
-from ExceptioWrongInput import InvalidInput
-from ExceptionNoMoreTickets import NoMoreTicketsLeft
-from ExceptionFlightNotFound import FlightNotFound
-from ExceptionTicketNotFound import TicketNotFound
-from ExceptionCustomerNotFound import CustomerNotFound
+from exceptions.ExceptioWrongInput import InvalidInput
+from exceptions.ExceptionNoMoreTickets import NoMoreTicketsLeft
+from exceptions.ExceptionFlightNotFound import FlightNotFound
+from exceptions.ExceptionTicketNotFound import TicketNotFound
+from exceptions.ExceptionCustomerNotFound import CustomerNotFound
 
 class CustomerFacade(FacadeBase):
 

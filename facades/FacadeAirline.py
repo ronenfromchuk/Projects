@@ -3,13 +3,13 @@ from logger import Logger
 from Flights import Flights
 from Airline_Companies import AirlineCompanies
 from FacadeBase import FacadeBase
-from ExceptioWrongInput import InvalidInput
-from ExceptionUnvalidToken import InvalidToken
-from ExceptionFlightNotFound import FlightNotFound
-from ExceptionWrongLocation import InvalidLocation
-from ExceptionAirlineNotFound import AirlineNotFound
-from ExceptionNoMoreTickets import NoMoreTicketsLeft
-from ExceptionInvalidTime import InvalidTime
+from exceptions.ExceptioWrongInput import InvalidInput
+from exceptions.ExceptionUnvalidToken import InvalidToken
+from exceptions.ExceptionFlightNotFound import FlightNotFound
+from exceptions.ExceptionWrongLocation import InvalidLocation
+from exceptions.ExceptionAirlineNotFound import AirlineNotFound
+from exceptions.ExceptionNoMoreTickets import NoMoreTicketsLeft
+from exceptions.ExceptionInvalidTime import InvalidTime
 
 
 class AirlineFacade(FacadeBase):

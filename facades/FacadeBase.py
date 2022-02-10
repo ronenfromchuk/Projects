@@ -2,11 +2,11 @@
 from logger import Logger
 from abc import ABC, abstractmethod
 from datetime import datetime
-from ExceptionShortPassword import WrongPassword
-from ExceptionAirlineNotFound import AirlineNotFound
-from ExceptionFlightNotFound import FlightNotFound
-from ExceptioWrongInput import InvalidInput
-from ExceptionWrongCountry import InvalidCountry
+from exceptions.ExceptionShortPassword import WrongPassword
+from exceptions.ExceptionAirlineNotFound import AirlineNotFound
+from exceptions.ExceptionFlightNotFound import FlightNotFound
+from exceptions.ExceptioWrongInput import InvalidInput
+from exceptions.ExceptionWrongCountry import InvalidCountry
 from Flights import Flights
 from Users import Users
 from Airline_Companies import AirlineCompanies

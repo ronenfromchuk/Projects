@@ -5,14 +5,14 @@ from Users import Users
 from Customers import Customers
 from Administrators import Administrators
 from Airline_Companies import AirlineCompanies
-from ExceptionUserExist import UserAlreadyExists
-from ExceptionUnvalidToken import InvalidToken
-from ExceptioWrongInput import InvalidInput
-from ExceptionShortPassword import WrongPassword
-from ExceptionAdminNotFound import AdminNotFound
-from ExceptionAirlineNotFound import AirlineNotFound
-from ExceptionCustomerNotFound import CustomerNotFound
-from ExceptionUndefinedUserId import UndefinedUserID
+from exceptions.ExceptionUserExist import UserAlreadyExists
+from exceptions.ExceptionUnvalidToken import InvalidToken
+from exceptions.ExceptioWrongInput import InvalidInput
+from exceptions.ExceptionShortPassword import WrongPassword
+from exceptions.ExceptionAdminNotFound import AdminNotFound
+from exceptions.ExceptionAirlineNotFound import AirlineNotFound
+from exceptions.ExceptionCustomerNotFound import CustomerNotFound
+from exceptions.ExceptionUndefinedUserId import UndefinedUserID
 
 class AdministratorFacade(FacadeBase):
 

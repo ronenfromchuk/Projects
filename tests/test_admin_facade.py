@@ -2,25 +2,25 @@
 import pytest
 from db_config import local_session
 from DbRepo import DbRepo
-from FacadeAnonymous import AnonymusFacade
+from facades.FacadeAnonymous import anonymousFacade
 from Airline_Companies import AirlineCompanies
 from Customers import Customers
 from Users import Users
 from Administrators import Administrators 
-from ExceptionUserExist import UserAlreadyExists
-from ExceptionWrongPassword import WrongPassword
-from ExceptionUndefinedUserId import UndefinedUserID
-from ExceptionAdminNotFound import AdminNotFound
-from ExceptionAirlineNotFound import AirlineNotFound
-from ExceptionCustomerNotFound import CustomerNotFound
-from ExceptioWrongInput import InvalidInput
+from exceptions.ExceptionUserExist import UserAlreadyExists
+from exceptions.ExceptionWrongPassword import WrongPassword
+from exceptions.ExceptionUndefinedUserId import UndefinedUserID
+from exceptions.ExceptionAdminNotFound import AdminNotFound
+from exceptions.ExceptionAirlineNotFound import AirlineNotFound
+from exceptions.ExceptionCustomerNotFound import CustomerNotFound
+from exceptions.ExceptioWrongInput import InvalidInput
 
 repo = DbRepo(local_session)
-anonymus_facade = AnonymusFacade(repo)
+anonymous_facade = anonymousFacade(repo)
 
 @pytest.fixture(scope='session')
 def admin_facade_object():
-    an_facade = AnonymusFacade(repo)
+    an_facade = anonymousFacade(repo)
     return an_facade.login('ronen', 'uguessit69')
 
 @pytest.fixture(scope='function', autouse=True)

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>hello flask</title>
+    </head>
+<body>
+
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML canvas tag.</canvas>
+
+    <div>try me</div>
+    <hr>
+<div id="result"></div>
+
+<script>
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.strokeText("ajax demo",10,50);
+
+fetch('http://127.0.0.1:5000/customers/1').then(function (response) {
+	// The API call was successful!
+	return response.json();
+}).then(function (data) {
+	// This is the JSON from our response
+	console.log(data);
+    var element = document.getElementById("result");
+    element.innerHTML = JSON.stringify(data);
+    //document.write(JSON.stringify(data))
+}).catch(function (err) {
+	// There was an error
+	console.warn('Something went wrong.', err);
+});
+</script>
+
+</body>
+</html>

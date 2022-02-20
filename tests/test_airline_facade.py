@@ -19,7 +19,7 @@ anonymous_facade = anonymousFacade(repo)
 @pytest.fixture(scope='session')
 def airline_facade_object():
     an_facade = anonymousFacade(repo)
-    return an_facade.login('d33zn1ts', 'buyaka619')
+    return an_facade.login('admintest', '1234567')
 
 @pytest.fixture(scope='function', autouse=True)
 def airline_facade_clean():
@@ -54,19 +54,19 @@ def test_not_add_flight(airline_facade_object):
         airline_facade_object.add_flight(flight)
 
 def test_update_airline(airline_facade_object):
-    airline_update = {'name':'Up Yours LTD'}
+    airline_update = {'name':'INDIAN AIRWAYS'}
     airline_facade_object.update_airline(airline_update, 1)
-    assert repo.get_by_column_value(AirlineCompanies, AirlineCompanies.name, 'Up Yours LTD') != None
+    assert repo.get_by_column_value(AirlineCompanies, AirlineCompanies.name, 'INDIAN AIRWAYS') != None
 
 def test_not_update_airline(airline_facade_object):
     with pytest.raises(InvalidInput):
-        airline_update = "{'name':'Up Yours LTD'}"
+        airline_update = "{'name':'INDIAN AIRWAYS'}"
         airline_facade_object.update_airline(airline_update, 2)
     with pytest.raises(InvalidInput):
-        airline_update = {'name':'Up Yours LTD'}
+        airline_update = {'name':'INDIAN AIRWAYS'}
         airline_facade_object.update_airline(airline_update, 'b')
     with pytest.raises(AirlineNotFound):
-        airline_update = {'name':'Up Yours LTD'}
+        airline_update = {'name':'INDIAN AIRWAYS'}
         airline_facade_object.update_airline(airline_update, 33)
 
 def test_update_flight(airline_facade_object):
@@ -92,4 +92,4 @@ def test_not_remove_flight(airline_facade_object):
     with pytest.raises(InvalidInput):
         airline_facade_object.remove_flight('ea')
     with pytest.raises(FlightNotFound):
-        airline_facade_object.remove_flight(77)
+        airline_facade_object.remove_flight(33)

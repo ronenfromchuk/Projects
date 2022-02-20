@@ -19,7 +19,7 @@ anonymous_facade = anonymousFacade(repo)
 @pytest.fixture(scope='session')
 def airline_facade_object():
     an_facade = anonymousFacade(repo)
-    return an_facade.login('admintest', '1234567')
+    return an_facade.login('ronen', 'uguessit69')
 
 @pytest.fixture(scope='function', autouse=True)
 def airline_facade_clean():

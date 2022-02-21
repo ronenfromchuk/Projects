@@ -1,1 +1,16 @@
-
+2022-02-21 19:40:41,659:DbRepo:WARNING:deleting table countries.
+2022-02-21 19:41:35,947:DbRepo:WARNING:deleting table countries.
+2022-02-21 19:41:35,992:DbRepo:WARNING:deleting table administrators.
+2022-02-21 19:41:35,998:DbRepo:WARNING:deleting table users.
+2022-02-21 19:41:36,003:DbRepo:WARNING:deleting table flights.
+2022-02-21 19:41:36,006:DbRepo:WARNING:deleting table airline_companies.
+2022-02-21 19:41:36,010:DbRepo:WARNING:deleting table tickets.
+2022-02-21 19:41:36,013:DbRepo:WARNING:deleting table customers.
+2022-02-21 19:41:58,394:DbRepo:WARNING:deleting table countries.
+2022-02-21 19:41:58,435:DbRepo:WARNING:deleting table administrators.
+2022-02-21 19:41:58,436:DbRepo:WARNING:deleting table users.
+2022-02-21 19:41:58,436:DbRepo:WARNING:deleting table flights.
+2022-02-21 19:41:58,437:DbRepo:WARNING:deleting table airline_companies.
+2022-02-21 19:41:58,438:DbRepo:WARNING:deleting table tickets.
+2022-02-21 19:41:58,439:DbRepo:WARNING:deleting table customers.
+2022-02-21 19:41:58,439:DbRepo:WARNING:deleting table user_roles.

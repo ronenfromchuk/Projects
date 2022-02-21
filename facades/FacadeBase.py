@@ -1,4 +1,3 @@
-# DONE
 from logger import Logger
 from abc import ABC, abstractmethod
 from datetime import datetime
@@ -7,17 +6,18 @@ from exceptions.ExceptionAirlineNotFound import AirlineNotFound
 from exceptions.ExceptionFlightNotFound import FlightNotFound
 from exceptions.ExceptioWrongInput import InvalidInput
 from exceptions.ExceptionWrongCountry import InvalidCountry
-from Flights import Flights
-from Users import Users
-from Airline_Companies import AirlineCompanies
-from Countries import Countries
+from tables.Flights import Flights
+from tables.Users import Users
+from tables.Airline_Companies import AirlineCompanies
+from tables.Countries import Countries
 
 
 class FacadeBase(ABC):
 
     @abstractmethod
-    def __init__(self, repo):
+    def __init__(self, repo, config):
         self.repo = repo
+        self.config = config
         self.logger = Logger.get_instance()
 
     def get_all_flights(self):
@@ -97,4 +97,4 @@ class FacadeBase(ABC):
             self.repo.add(user)
 
     def __str__(self):
-        return f'repo: {self.repo}'
+        return f'facade_base_repo: {self.repo}'

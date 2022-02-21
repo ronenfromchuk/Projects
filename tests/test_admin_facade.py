@@ -1,12 +1,11 @@
-# DONE
 import pytest
-from db_config import local_session
+from db_config import local_session, config
 from DbRepo import DbRepo
-from facades.FacadeAnonymous import anonymousFacade
-from Airline_Companies import AirlineCompanies
-from Customers import Customers
-from Users import Users
-from Administrators import Administrators 
+from facades.FacadeAnonymous import AnonymousFacade
+from tables.Airline_Companies import AirlineCompanies
+from tables.Customers import Customers
+from tables.Users import Users
+from tables.Administrators import Administrators 
 from exceptions.ExceptionUserExist import UserAlreadyExists
 from exceptions.ExceptionWrongPassword import WrongPassword
 from exceptions.ExceptionUndefinedUserId import UndefinedUserID
@@ -16,11 +15,10 @@ from exceptions.ExceptionCustomerNotFound import CustomerNotFound
 from exceptions.ExceptioWrongInput import InvalidInput
 
 repo = DbRepo(local_session)
-anonymous_facade = anonymousFacade(repo)
 
 @pytest.fixture(scope='session')
 def admin_facade_object():
-    an_facade = anonymousFacade(repo)
+    an_facade = AnonymousFacade(repo, config)
     return an_facade.login('ronen', 'uguessit69')
 
 @pytest.fixture(scope='function', autouse=True)
@@ -34,8 +32,10 @@ def test_add_administrator(admin_facade_object):
     expected_admin = Administrators(first_name='testronen', last_name='testfromchuk', user_id=8)
     expected_user = Users(username='testr0nen', password='testuguessit69', email='testronen@mcr.com', user_role=1)
     admin_facade_object.add_administrator(expected_admin, expected_user)
-    assert repo.get_by_column_value(Administrators, Administrators.first_name, 'testronen') != None
-    assert repo.get_by_column_value(Users, Users.username, 'testr0nen') != None
+    check_admin = repo.get_by_id(Administrators, 3)
+    check_user = repo.get_by_id(Users, 8)
+    assert check_admin == expected_admin
+    assert check_user == expected_user
 
 def test_not_add_administrator(admin_facade_object):
     with pytest.raises(InvalidInput):
@@ -63,8 +63,10 @@ def test_add_airline(admin_facade_object):
     expected_airline = AirlineCompanies(name='testel-al', country_id=1, user_id=8)
     expected_user = Users(username='testr0nen', password='11111111', email='testronen@mcr.com', user_role=2)
     admin_facade_object.add_airline(expected_airline, expected_user)
-    assert repo.get_by_column_value(AirlineCompanies, AirlineCompanies.name, 'testel-al') != None
-    assert repo.get_by_column_value(Users, Users.username, 'testr0nen') != None
+    check_airline = repo.get_by_id(AirlineCompanies, 3)
+    check_user = repo.get_by_id(Users, 8)
+    assert check_airline == expected_airline
+    assert check_user == expected_user
 
 def test_not_add_airline(admin_facade_object):
     with pytest.raises(InvalidInput):
@@ -92,8 +94,10 @@ def test_add_customer(admin_facade_object):
     expected_customer = Customers(first_name='testmichael', last_name='testjackson', address='London oxford st.', phone_number='test0506666666', credit_card_number='test6806668882', user_id=7)
     expected_user = Users(username='testmjackson', password='testjustd01t', email='testmichael@mcr.com', user_role=3)
     admin_facade_object.add_customer(expected_customer, expected_user)
-    assert repo.get_by_column_value(Customers, Customers.first_name, 'testmichael') != None
-    assert repo.get_by_column_value(Users, Users.username, 'testmichael') != None
+    check_customer = repo.get_by_id(Customers, 4)
+    check_user = repo.get_by_id(Users, 8)
+    assert check_customer == expected_customer
+    assert check_user == expected_user
 
 def test_not_add_customer(admin_facade_object):
     with pytest.raises(InvalidInput):

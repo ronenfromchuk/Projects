@@ -1,15 +1,14 @@
-# DONE
 import pytest
-from Countries import Countries
-from db_config import local_session
+from tables.Countries import Countries
+from db_config import local_session, config
 from DbRepo import DbRepo
 from datetime import datetime
-from facades.FacadeAnonymous import anonymousFacade
-from Airline_Companies import AirlineCompanies
-from Customers import Customers
-from Users import Users
-from Flights import Flights
-from Administrators import Administrators 
+from facades.FacadeAnonymous import AnonymousFacade
+from tables.Airline_Companies import AirlineCompanies
+from tables.Customers import Customers
+from tables.Users import Users
+from tables.Flights import Flights
+from tables.Administrators import Administrators 
 from exceptions.ExceptionUserExist import UserAlreadyExists
 from exceptions.ExceptionShortPassword import WrongPassword
 from exceptions.ExceptionUndefinedUserId import UndefinedUserID
@@ -21,7 +20,7 @@ from exceptions.ExceptionFlightNotFound import FlightNotFound
 from exceptions.ExceptionWrongCountry import InvalidCountry
 
 repo = DbRepo(local_session)
-anonymous_facade = anonymousFacade(repo)
+anonymous_facade = AnonymousFacade(repo, config)
 
 @pytest.fixture(scope='session')
 def base_facade_object():
@@ -42,7 +41,7 @@ def test_not_get_flight_by_id(base_facade_object):
     with pytest.raises(InvalidInput):
         base_facade_object.get_flight_by_id('1')
     with pytest.raises(FlightNotFound):
-        base_facade_object.get_flight_by_id(888)
+        base_facade_object.get_flight_by_id(777)
 
 def test_get_flights_by_parameters(base_facade_object):
     sample = base_facade_object.get_flights_by_parameters(1,2,datetime(2022, 4, 1, 12, 00, 00))

@@ -1,14 +1,14 @@
 from logger import Logger
 from datetime import datetime
 from sqlalchemy import asc
-from Users import Users
-from Flights import Flights
-from Tickets import Tickets
-from Customers import Customers
-from Countries import Countries
-from User_Roles import UserRoles
-from Administrators import Administrators
-from Airline_Companies import AirlineCompanies
+from tables.Users import Users
+from tables.Flights import Flights
+from tables.Tickets import Tickets
+from tables.Customers import Customers
+from tables.Countries import Countries
+from tables.User_Roles import UserRoles
+from tables.Administrators import Administrators
+from tables.Airline_Companies import AirlineCompanies
 
 
 class DbRepo:
@@ -82,7 +82,7 @@ class DbRepo:
     def create_all_sp(self, file):
             try:
                 with open(file, 'r') as sp_file:
-                    queries = sp_file.read().split('---')
+                    queries = sp_file.read().split('|||')
                 for query in queries:
                     self.local_session.execute(query)
                 self.local_session.commit()

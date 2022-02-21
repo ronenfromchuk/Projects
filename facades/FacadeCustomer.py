@@ -1,9 +1,10 @@
 # DONE
 from logger import Logger
 from FacadeBase import FacadeBase
-from Tickets import Tickets
-from Flights import Flights
-from Customers import Customers
+from tables.Tickets import Tickets
+from tables.Flights import Flights
+from tables.Customers import Customers
+from exceptions.ExceptionUnvalidToken import InvalidToken
 from exceptions.ExceptioWrongInput import InvalidInput
 from exceptions.ExceptionNoMoreTickets import NoMoreTicketsLeft
 from exceptions.ExceptionFlightNotFound import FlightNotFound
@@ -12,8 +13,8 @@ from exceptions.ExceptionCustomerNotFound import CustomerNotFound
 
 class CustomerFacade(FacadeBase):
 
-    def __init__(self, repo, login_token):
-        super().__init__(repo)
+    def __init__(self, repo, config, login_token):
+        super().__init__(repo, config)
         self.login_token = login_token
         self.logger = Logger.get_instance()
 
@@ -29,8 +30,13 @@ class CustomerFacade(FacadeBase):
             self.logger.logger.error(f'{CustomerNotFound}, customer=[{customer_id}] wasnt found!')
             raise CustomerNotFound
         else: 
-            self.logger.logger.info(f'customer=[{customer_id}], has been updated!')
-            self.repo.update_by_id(Customers, Customers.id, customer_id, customer)
+            customer_check = self.repo.get_by_id(Customers, customer_id)
+            if self.login_token.id != customer_check.user_id:
+                self.logger.logger.error(f'{InvalidToken}, you cant edit customers!')
+                raise InvalidToken
+            else: 
+                self.logger.logger.info(f'customer=[{customer_id}], has been updated!')
+                self.repo.update_by_id(Customers, Customers.id, customer_id, customer)
 
     def add_ticket(self, ticket):
         self.logger.logger.debug(f'adding ticket >>>')
@@ -41,15 +47,18 @@ class CustomerFacade(FacadeBase):
         if flight == None: 
             self.logger.logger.error(f'{FlightNotFound}, flight=[{ticket.flight_id}] wasnt found!')
             raise FlightNotFound
-        self.repo.add(ticket)
-        self.repo.update_by_id(Flights, Flights.id, ticket.flight_id, {'remaining_tickets': flight.remaining_tickets - 1})
-        self.logger.logger.info(f'Ticket created!')
-        
-        if flight.remaining_tickets < 0:
-            self.repo.update_by_id(Flights, Flights.id, ticket.flight_id, {'remaining_tickets': 0})
-            self.repo.delete_by_id(Tickets, Tickets.id, ticket.id)
-            self.logger.logger.error(f'{NoMoreTicketsLeft}, theres no seats available, adding ticket cancelled!')
+        elif flight.remaining_tickets == 0:
+            self.logger.logger.error(f'{NoMoreTicketsLeft}, no seats are available, ticket has been canceled!')
             raise NoMoreTicketsLeft
+        else:
+            customer_check = self.repo.get_by_id(Customers, ticket.customer_id)
+            if self.login_token.id != customer_check.user_id:
+                self.logger.logger.error(f'{InvalidToken}, you cant edit customers!')
+                raise InvalidToken
+            else:
+                self.repo.add(ticket)
+                self.repo.update_by_id(Flights, Flights.id, ticket.flight_id, {'remaining_tickets': flight.remaining_tickets - 1})
+                self.logger.logger.info(f'ticket has been created!')
 
     def remove_ticket(self, ticket):
         self.logger.logger.debug(f'removing ticket=[{ticket}] >>>')
@@ -60,8 +69,16 @@ class CustomerFacade(FacadeBase):
             self.logger.logger.error(f'{TicketNotFound}, ticket=[{ticket}] wasnt found!')
             raise TicketNotFound
         else: 
-            self.repo.delete_by_id(Tickets, Tickets.id, ticket)
-            self.logger.logger.info(f'ticket=[{ticket}], has been deleted!')
+            ticket_delete = self.repo.get_by_id(Tickets, ticket)
+            customer = self.repo.get_by_id(Customers, ticket_delete.customer_id)
+            if self.login_token.id != customer.user_id:
+                self.logger.logger.error(f'{InvalidToken}, you cant edit customers!')
+                raise InvalidToken
+            else:
+                flight = self.get_flight_by_id(ticket_delete.flight_id) 
+                self.repo.update_by_id(Flights, Flights.id, flight.id, {'remaining_tickets': flight.remaining_tickets + 1})
+                self.repo.delete_by_id(Tickets, Tickets.id, ticket)
+                self.logger.logger.info(f'ticket=[{ticket}], has been deleted!')
 
     def get_ticket_by_customer(self, customer):
         self.logger.logger.debug(f'getting ticket by customer=[{customer}] >>>')
@@ -72,8 +89,13 @@ class CustomerFacade(FacadeBase):
             self.logger.logger.error(f'{CustomerNotFound}, customer=[{customer}] wadnt found!')
             raise CustomerNotFound
         else: 
-            self.logger.logger.info(f'ticket/s by=[{customer}], has been displayed!')
-            return self.repo.get_by_column_value(Tickets, Tickets.customer_id, customer)
+            customer_check = self.repo.get_by_id(Customers, customer)
+            if self.login_token.id != customer_check.user_id:
+                self.logger.logger.error(f'{InvalidToken}, you cant edit customers!')
+                raise InvalidToken
+            else:
+                self.logger.logger.info(f'ticket/s by customer=[{customer}], has been displayed!')
+                return self.repo.get_by_column_value(Tickets, Tickets.customer_id, customer)
 
     def __str__(self):
-        return f'{super().__init__}'
+        return f'facade_customer: {self.logger}... token id={self.login_token.id} \n name={self.login_token.name}, role={self.login_token.role}'

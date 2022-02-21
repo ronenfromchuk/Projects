@@ -1,10 +1,9 @@
-# DONE
 from logger import Logger
 from FacadeBase import FacadeBase
-from Users import Users
-from Customers import Customers
-from Administrators import Administrators
-from Airline_Companies import AirlineCompanies
+from tables.Users import Users
+from tables.Customers import Customers
+from tables.Administrators import Administrators
+from tables.Airline_Companies import AirlineCompanies
 from exceptions.ExceptionUserExist import UserAlreadyExists
 from exceptions.ExceptionUnvalidToken import InvalidToken
 from exceptions.ExceptioWrongInput import InvalidInput
@@ -16,10 +15,14 @@ from exceptions.ExceptionUndefinedUserId import UndefinedUserID
 
 class AdministratorFacade(FacadeBase):
 
-    def __init__(self, repo, login_token):
-        super().__init__(repo)
+    def __init__(self, repo, config, login_token):
+        super().__init__(repo, config)
         self.login_token = login_token
         self.logger = Logger.get_instance()
+        self.admin_role_number = self.config["user_roles"]["admin"]
+        self.airline_role_number = self.config["user_roles"]["airline"]
+        self.customer_role_number = self.config["user_roles"]["customer"]
+        self.password_length = self.config["limits"]["password_length"]
 
     def get_all_customers(self):
         self.logger.logger.debug(f'getting all customers >>>')
@@ -40,8 +43,8 @@ class AdministratorFacade(FacadeBase):
         elif self.repo.get_by_id(Users, administrator.user_id) != None: 
             self.logger.logger.error(f'{UserAlreadyExists}, user id=[{administrator.user_id}] is occupied!')
             raise UserAlreadyExists
-        elif user.user_role == 1: 
-            super().create_user(user)
+        elif user.user_role == int(self.admin_role_number): 
+            self.create_user(user)
             self.logger.logger.info(f'user=[{user.username}], has been created!')
             self.repo.add(administrator)
             self.logger.logger.info(f'administrator=[{administrator.first_name} {administrator.last_name}], has been created!')
@@ -61,8 +64,8 @@ class AdministratorFacade(FacadeBase):
         elif self.repo.get_by_id(Users, airline.user_id) != None: 
             self.logger.logger.error(f'{UserAlreadyExists}, user id=[{airline.user_id}], is occupied!')
             raise UserAlreadyExists
-        elif user.user_role == 2: 
-            super().create_user(user)
+        elif user.user_role == int(self.airline_role_number):  
+            self.create_user(user)
             self.logger.logger.info(f'user=[{user.username}], has been created!')
             self.repo.add(airline)
             self.logger.logger.info(f'administrator=[{airline.name}], has been created!')
@@ -82,11 +85,11 @@ class AdministratorFacade(FacadeBase):
         elif self.repo.get_by_id(Users, customer.user_id) != None: 
             self.logger.logger.error(f'{UserAlreadyExists}, user id=[{customer.user_id}], is occupied!')
             raise UserAlreadyExists
-        elif len(user.password) < 6: 
+        elif len(user.password) < int(self.password_length): 
             self.logger.logger.error(f'{WrongPassword}, your password must be 6 characters at least!')
             raise WrongPassword
-        elif user.user_role == 3: 
-            super().create_user(user)
+        elif user.user_role == int(self.customer_role_number): 
+            self.create_user(user)
             self.logger.logger.info(f'user=[{user.username}], has been created!')
             self.repo.add(customer)
             self.logger.logger.info(f'customer=[{customer.first_name} {customer.last_name}], has been created!')
@@ -95,6 +98,7 @@ class AdministratorFacade(FacadeBase):
             raise UndefinedUserID
     
     def remove_administrator(self, administrator):
+        self.logger.logger.debug(f'Removing administrator >>>')
         if not isinstance(administrator, int): raise InvalidInput('input should be integer!')
         elif self.login_token.role != 'Administrator': raise InvalidToken
         admin = self.repo.get_by_id(Administrators, administrator)
@@ -140,4 +144,4 @@ class AdministratorFacade(FacadeBase):
 
 
     def __str__(self):
-        return f'{super().__init__}'
+        return f'facade_administrator={self.logger}, token id={self.login_token.id}, name={self.login_token.name}, role={self.login_token.role}'

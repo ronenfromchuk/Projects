@@ -23,6 +23,6 @@ repo.delete_table('user_roles')
 '''
 
 #repo.add(tables.Countries.Countries(name='argentina'))
-#repo.add(tables.Countries.Countries(name='dublin'))
+#repo.add(tables.Countries.Countries(name='irland'))
 
 #repo.add(tables.Administrators.Administrators(first_name='bobby', last_name='charlton', user_id=3))

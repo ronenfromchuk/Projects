@@ -6,7 +6,7 @@ class Customer:
         self.location = location
 
     def __repr__(self):
-        return f'customer id={self.id_}, name="{self.name}", location="{self.location}")'
+        return f'customer id={self.id_}, name="{self.name}", location="{self.location}"'
 
     def __str__(self):
-        return f'customer id_={self.id_}, name="{self.name}", location="{self.location}"]'
+        return f'customer id_={self.id_}, name="{self.name}", location="{self.location}"'

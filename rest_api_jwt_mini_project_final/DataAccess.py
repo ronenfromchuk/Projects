@@ -78,7 +78,7 @@ class RestDataAccess:
             self.con.commit()
         return True
 
-    def delete_customer(self, id_):  # can do it with try catch but not raising any errors if id not exists in the db
+    def delete_customer(self, id_):
         self.db_cursor.execute(f'delete from customers where id={id_}')
         self.con.commit()
         return True

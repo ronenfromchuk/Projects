@@ -1,0 +1,33 @@
+2022-03-13 16:16:38,890:app:signup:19708:20324:INFO:new user=[user id_=None, public id="a380bb66-51ab-4e34-a889-2468d0028b43, "username="anthonyjoshua", password="pbkdf2:sha256:260000$RcwrAKOIG1gvy4Mx$74968a277da19acaa34d059b6bbed52997ba4a67b58d3efd04d86c8dc2d3c354"]], has been created successfully!
+2022-03-13 16:17:07,792:app:decorated:19708:17132:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 16:17:12,093:app:decorated:19708:2876:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 16:17:12,662:app:decorated:19708:13208:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 16:17:13,140:app:decorated:19708:12916:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 16:17:13,562:app:decorated:19708:20088:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 16:17:13,895:app:decorated:19708:9884:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 16:17:14,813:app:decorated:19708:20268:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 20:02:32,342:app:decorated:9528:14240:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 20:02:56,073:app:signup:9528:7160:INFO:new user=[user id_=None, public id="2bb269c4-b43d-42f3-b8cb-cfb45763c86c, "username="alexfergie", password="pbkdf2:sha256:260000$iEFVZbZNrnEHNWGJ$276bfcc55a0f615e00ca4ad5fa73816ef7be9e72cced31119d40be1033e87bdf"]], has been created successfully!
+2022-03-13 20:03:49,807:app:decorated:9528:14728:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 20:04:23,616:app:decorated:9528:4800:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 20:04:27,248:app:decorated:9528:12276:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 20:04:31,505:app:decorated:9528:21068:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 20:04:37,727:app:decorated:9528:20716:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 20:06:04,005:app:decorated:9528:16688:INFO:user attempted to use function which requires jwt token, token is missing!
+2022-03-13 20:07:16,969:app:decorated:11152:21328:INFO:user attempted to use function which requires jwt token, token is missing!
+2022-03-13 20:07:24,071:app:decorated:11152:21212:INFO:user attempted to use function which requires jwt token, token is missing!
+2022-03-13 20:55:07,179:app:decorated:12740:2656:INFO:user attempted to use function which requires jwt token, token is missing!
+2022-03-13 20:59:56,311:app:signup:14136:12160:INFO:new user=[user id_=None, public id="134ddc9e-7678-46e3-a362-fc5c5863d573, "username="alexfergie", password="pbkdf2:sha256:260000$eUko9QBGgb2ubRjo$7b3b406858cb251446c568986ef39d374b30f49c1f20fcec06e7b0a998fcaf27"]], has been created successfully!
+2022-03-13 21:01:17,377:app:decorated:14136:19248:INFO:user attempted to use function which requires jwt token, token is missing!
+2022-03-13 21:03:37,301:app:decorated:14136:21108:INFO:user attempted to use function which requires jwt token, token is missing!
+2022-03-13 21:03:56,973:app:decorated:14136:18932:INFO:user attempted to use function which requires jwt token, token is missing!
+2022-03-13 21:04:39,643:app:decorated:14136:6984:INFO:user attempted to use function which requires jwt token, token is missing!
+2022-03-13 21:05:52,538:app:decorated:14136:20244:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 21:06:06,682:app:decorated:14136:17992:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 21:06:11,334:app:decorated:14136:14016:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 21:07:24,568:app:decorated:14136:9984:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 21:07:25,915:app:decorated:14136:20212:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 21:07:41,138:app:decorated:14136:4236:INFO:user attempted to use function which requires jwt token, token is missing!
+2022-03-13 21:07:47,616:app:decorated:14136:4424:INFO:user attempted to use function which requires jwt token, token is missing!
+2022-03-13 21:10:11,155:app:decorated:14136:21208:WARNING:user attempted to use function which requires jwt token, token isn't valid!
+2022-03-13 21:11:48,090:app:decorated:14136:2244:WARNING:user attempted to use function which requires jwt token, token isn't valid!

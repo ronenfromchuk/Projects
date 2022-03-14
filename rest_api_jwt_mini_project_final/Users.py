@@ -7,9 +7,7 @@ class User:
         self.password = password
 
     def __repr__(self):
-        return f'user id={self.id_}, public id="{self.public_id}, "username="{self.username}",' \
-               f' password="{self.password}")'
+        return f'user id={self.id_}, public id="{self.public_id}, "username="{self.username}", "password="{self.password})'
 
     def __str__(self):
-        return f'user id_={self.id_}, public id="{self.public_id}, "username="{self.username}",' \
-               f' password="{self.password}"]'
+        return f'user id={self.id_}, public id="{self.public_id}, "username="{self.username}", "password="{self.password})'

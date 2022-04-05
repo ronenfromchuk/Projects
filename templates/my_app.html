@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='my_appstyle.css') }}>
+</head>
+<body>
+<form action="/logout" method="get">
+    <div class="bgimg">
+    <div class="topleft">
+        <p class='damn' style="color:white">FLYIGHT SYSTEM APP</p>
+    </div>
+    <div class="middle">
+        <h1 style="color: white">Hello, {% print(session['uname']) %}!</h1>
+        <button type="submit">Logout</button>
+    </div>
+    <div class="bottomleft">
+    </div>
+    </div>
+</form>
+</body>
+</html>

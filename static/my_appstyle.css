@@ -1,0 +1,60 @@
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .bgimg {
+    background-image: url('images/ez.jpg'); 
+    background-color: #ffffff; 
+    height: 500px; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+  }
+  
+  .topleft {
+    position: absolute;
+    top: 0;
+    left: 16px;
+    width: 20%;
+    border-radius: 25%;
+  }
+  
+  .bottomleft {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+  }
+  
+  .middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  button {
+    background-color: #ff6302;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+
+  hr {
+    margin: auto;
+    width: 40%;
+  }
+
+.damn {
+  width: 100%;
+  display: flex;
+  margin-left: 82vh;
+}

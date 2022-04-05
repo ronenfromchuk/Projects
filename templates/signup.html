@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='signupstyle.css') }}>
+</head>
+<body>
+
+<form action="/signup_process" method="post" style="post">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p style="color: blue">Creation account form:</p>
+    <hr>
+
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Choose Your Username" name="uname" required>
+    {% if user_exists==True: %}
+      <span style="color: red">Username already exist!</span><br /><br />
+    {% endif %}
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Your Email" name="email" required>
+    {% if email_exists==True: %}
+      <span style="color: red">This email already registered!</span><br /><br />
+    {% endif %}
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+    {% if short_password==True: %}
+      <span style="color: red">password too short!</span><br /><br />
+    {% endif %}
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    {% if bad_repeat==True: %}
+      <span style="color: red">your password doesn't match, please try again.</span><br /><br />
+    {% endif %}
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> 
+      By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.
+    </label>
+    
+    <div class="clearfix">
+      <a href="{{ url_for('login') }}"><button type="button" class="cancelbtn">Cancel</button></a>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>
